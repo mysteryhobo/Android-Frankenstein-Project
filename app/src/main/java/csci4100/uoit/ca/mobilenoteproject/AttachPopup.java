@@ -60,7 +60,7 @@ public class AttachPopup extends AppCompatActivity {
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-        Downloader.DownloadFile("https://www.durhamregiontransit.com/Schedules/Documents/0314_Oshawa/0314_401_Simcoe_North_WKDY_S3_M4.pdf", file);
+        Downloader.DownloadFile("https://bitcoin.org/bitcoin.pdf", file);
 
         showPdf();
     }
