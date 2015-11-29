@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MobileNoteProject</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="btn_newNote_mainPage">New Note</string>
+    <string name="title_activity_create_new_text_note">CreateNewTextNote</string>
+    <string name="editTxt_NewTExtNoteHint_NewTextNotePage">Enter new note text here</string>
+    <string name="btn_SubmitNoteText_CreatNewTextNotePage">Submit</string>
+    <string name="btn_CancelNewNote_CreatNewTextNotePage">Cancel</string>
+    <string name="addPicture">Add Pic</string>
+    <string name="title_activity_attach_popup">AttachPopup</string>
+</resources>

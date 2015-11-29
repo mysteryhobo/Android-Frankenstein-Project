@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="csci4100.uoit.ca.mobilenoteproject.CreateNewTextNote">
+
+    <EditText
+        android:id="@+id/EditText_CreateNewNotePage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:hint="@string/editTxt_NewTExtNoteHint_NewTextNotePage"/>
+
+    <TextView
+        android:id="@+id/lblAttach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attach:"
+        />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="40dp"
+        android:maxWidth="50dp"
+        android:scaleType="fitXY"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="right"
+        android:src="@drawable/attachicon"
+        android:id="@+id/openpopup"
+        android:onClick="onClick"
+        />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addPicture"
+        android:onClick="dispatchTakePictureIntent"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_SubmitNoteText_CreatNewTextNotePage"
+        android:onClick="submitNote"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_CancelNewNote_CreatNewTextNotePage"
+        android:onClick="cancelNewNote"/>
+
+</LinearLayout>
