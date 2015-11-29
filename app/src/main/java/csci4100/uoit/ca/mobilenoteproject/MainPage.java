@@ -44,6 +44,10 @@ public class MainPage extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.pop) {
+            Intent intent = new Intent(this,AttachPopup.class);
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }

@@ -19,7 +19,7 @@
 
 
     <EditText
-        android:background="@drawable/edtTxt_student_id"
+        android:background="@drawable/edttxt_student_id"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
@@ -31,7 +31,7 @@
 
 
     <EditText
-        android:background="@drawable/edtTxt_password"
+        android:background="@drawable/edttxt_password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/editText_password"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:id="@+id/imageButton"
-        android:background="@drawable/ImgBtn_signIn"
+        android:background="@drawable/imgbtn_signin"
 
         />
 
