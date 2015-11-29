@@ -48,6 +48,10 @@ public class MainPage extends AppCompatActivity {
             Intent intent = new Intent(this,AttachPopup.class);
             startActivity(intent);
         }
+        if (id == R.id.start) {
+            Intent intent = new Intent(this,LoginScreen.class);
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }
