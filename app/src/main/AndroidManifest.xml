@@ -31,6 +31,10 @@
             android:name=".AttachPopup"
             android:label="@string/title_activity_attach_popup" >
         </activity>
+        <activity
+            android:name=".LoginScreen"
+            android:label="@string/title_activity_login">
+        </activity>
     </application>
 
 </manifest>
