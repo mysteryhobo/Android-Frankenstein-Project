@@ -60,7 +60,7 @@
 
             <ImageButton
                 android:id="@+id/pdf"
-
+                android:onClick="downloadPdf"
                 android:adjustViewBounds="true"
                 android:maxHeight="40dp"
                 android:maxWidth="50dp"
