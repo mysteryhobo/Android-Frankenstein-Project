@@ -10,4 +10,7 @@
     <string name="btn_CancelNewNote_CreatNewTextNotePage">Cancel</string>
     <string name="addPicture">Add Pic</string>
     <string name="title_activity_attach_popup">AttachPopup</string>
+    <string name="editTextHint_enterTime">Enter time</string>
+    <string name="editTextHint_enterDate">Enter date</string>
+    <string name="editTxt_noteName">Enter note name</string>
 </resources>

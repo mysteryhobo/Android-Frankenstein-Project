@@ -1,5 +1,7 @@
 package csci4100.uoit.ca.mobilenoteproject;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -7,17 +9,21 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
+import android.widget.TimePicker;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -25,12 +31,13 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class CreateNewTextNote extends AppCompatActivity {
+public class CreateNewTextNote extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     static final int SELECT_PICTURE = 1;
     static final int REQUEST_TAKE_PHOTO = 3;
     static final int REQUEST_IMAGE_CAPTURE = 6;
     private boolean imageAdded = false;
+
     private Bitmap image;
 
     private Intent returnNewNoteIntent;
@@ -96,6 +103,48 @@ public class CreateNewTextNote extends AppCompatActivity {
         returnNewNoteIntent.putExtra("noteTextResult", noteText.getText().toString());
         setResult(RESULT_OK, returnNewNoteIntent);
         finish();
+    }
+
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        ((EditText) findViewById(R.id.EditText_time)).setText(formatTime(hourOfDay, minute));
+    }
+
+    public String formatTime(int hour, int min){
+        String amOrPm;
+        String minString;
+        if (hour > 12) {
+            amOrPm = "PM";
+            hour -= 12;
+        }
+        else amOrPm = "AM";
+        if (min < 10) minString = "0" + min;
+        else minString = Integer.toString(min);
+        return hour + ":" + minString + " " + amOrPm;
+    }
+
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int day) {
+        //do some stuff for example write on log and update TextField on activity
+        Log.w("DatePicker", "Date = " + year);
+        Date date = new Date(year, month, day);
+        ((EditText) findViewById(R.id.EditText_date)).setText(formatDate(date, year));
+    }
+
+    public String formatDate(Date date, int year) {
+        String dateAsString = date.toString();
+        String[] dateParts = dateAsString.split(" ");
+        return dateParts[0] + " " + dateParts[1] + " " + dateParts[2] + " " + year;
     }
 
     public void cancelNewNote(View btn) {
