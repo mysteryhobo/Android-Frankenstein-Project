@@ -5,12 +5,13 @@ import android.net.Uri;
 import java.util.Date;
 
 /**
- * Created by ubuntu on 08/11/15.
+ * Created by Peter Little on 08/11/15.
  */
 public class Note {
+    private long id;
     private String name;
     private String description;
-    private Date dateCreated;
+    private String date;
     private boolean hasPicture = false;
     private boolean hasVideo = false;
     private boolean hasPDF = false;
@@ -18,18 +19,18 @@ public class Note {
     private Uri imageUri;
 
 
-    public Note(String name, String description, Date date){
+    public Note(String name, String description, String date){
         this.name = name;
         this.description = description;
         this.hasdescription = true;
-        this.dateCreated = date;
+        this.date = date;
     }
 
-    public Note(String name, String description, Date date, Uri image){
+    public Note(String name, String description, String date, Uri image){
         this.name = name;
         this.description = description;
         this.hasdescription = true;
-        this.dateCreated = date;
+        this.date = date;
         this.imageUri = image;
         this.hasPicture = true;
     }
@@ -51,12 +52,12 @@ public class Note {
         this.description = description;
     }
 
-    public Date getDateCreated() {
-        return dateCreated;
+    public String getDate() {
+        return date;
     }
 
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public boolean isHasPicture() {
@@ -81,5 +82,13 @@ public class Note {
 
     public void setHasPDF(boolean hasPDF) {
         this.hasPDF = hasPDF;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
