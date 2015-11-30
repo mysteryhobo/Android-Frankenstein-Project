@@ -144,6 +144,7 @@ public class ShowNotes extends ListActivity {
         Intent createNewTextNoteIntent = new Intent(this, CreateNewTextNote.class);
 
         String student = getIntent().getStringExtra("StudentID");
+
         createNewTextNoteIntent.putExtra("StudentID", student);
         startActivityForResult(createNewTextNoteIntent, CREATE_NEW_TEXT_NOTE_REQUEST_CODE);
     }
@@ -164,7 +165,9 @@ public class ShowNotes extends ListActivity {
             List<NameValuePair> params = new ArrayList<NameValuePair>();
 
             String student = getIntent().getStringExtra("StudentID");
+            String class_fk = getIntent().getStringExtra("class_pk");
             params.add(new BasicNameValuePair("studentID", student));
+            params.add(new BasicNameValuePair("class_fk",class_fk));
             // getting JSON string from URL
             JSONObject json = jParser.makeHttpRequest(url_all_notes, "GET", params);
 
