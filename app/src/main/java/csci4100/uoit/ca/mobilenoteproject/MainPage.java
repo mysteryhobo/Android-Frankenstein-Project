@@ -50,7 +50,6 @@ public class MainPage extends ListActivity {
     // products JSONArray
     JSONArray notes = null;
 
-    String student = getIntent().getStringExtra("StudentID");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +136,8 @@ public class MainPage extends ListActivity {
 
     public void createNewTextNote(View btn) {
         Intent createNewTextNoteIntent = new Intent(this, CreateNewTextNote.class);
+
+        String student = getIntent().getStringExtra("StudentID");
         createNewTextNoteIntent.putExtra("StudentID", student);
         startActivityForResult(createNewTextNoteIntent, CREATE_NEW_TEXT_NOTE_REQUEST_CODE);
     }
@@ -148,6 +149,8 @@ public class MainPage extends ListActivity {
         protected String doInBackground(String... args) {
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+            String student = getIntent().getStringExtra("StudentID");
             params.add(new BasicNameValuePair("studentID", student));
             // getting JSON string from URL
             JSONObject json = jParser.makeHttpRequest(url_all_notes, "GET", params);
