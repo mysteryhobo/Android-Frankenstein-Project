@@ -12,6 +12,7 @@ public class Note {
     private String name;
     private String description;
     private String date;
+    private String time;
     private boolean hasPicture = false;
     private boolean hasVideo = false;
     private boolean hasPDF = false;
@@ -19,11 +20,13 @@ public class Note {
     private Uri imageUri;
 
 
-    public Note(String name, String description, String date){
+    public Note(String name, String description, String date, String time){
         this.name = name;
         this.description = description;
         this.hasdescription = true;
         this.date = date;
+
+        this.time = time;
     }
 
     public Note(String name, String description, String date, Uri image){
@@ -35,10 +38,10 @@ public class Note {
         this.hasPicture = true;
     }
 
-
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         this.name = name;
@@ -58,6 +61,14 @@ public class Note {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public boolean isHasPicture() {

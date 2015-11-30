@@ -7,7 +7,8 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -33,7 +34,12 @@
         </activity>
         <activity
             android:name=".LoginScreen"
-            android:label="@string/title_activity_login">
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".ShowAudioLectures"
+            android:label="@string/title_activity_audio_lectures"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 

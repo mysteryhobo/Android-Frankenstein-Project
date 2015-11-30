@@ -16,4 +16,8 @@
     <string name="editTextHint_password">Enter Password</string>
     <string name="editTextHint_studentID">Enter Student ID</string>
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_audio_lectures">AudioLectures</string>
+    <string name="lecturesTitle">Lectures</string>
+    <string name="lectureName">Lecture1</string>
+    <string name="menuItem_audioLectures">Audio Lectures</string>
 </resources>

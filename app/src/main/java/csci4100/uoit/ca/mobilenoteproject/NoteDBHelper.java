@@ -24,7 +24,8 @@ public class NoteDBHelper extends SQLiteOpenHelper {
             "  _id integer primary key autoincrement, " +
             "  name text not null," +
             "  description text not null," +
-            "  date text not null" +
+            "  date text not null," +
+            "  time text not null" +
             ")";
     public static final String DROP_STATEMENT = "DROP TABLE " + TABLE_NAME;
 
@@ -48,9 +49,9 @@ public class NoteDBHelper extends SQLiteOpenHelper {
         database.execSQL(CREATE_STATEMENT);
     }
 
-    public Note createNote(String name, String description, String date/*, Uri media*/) {
+    public Note createNote(String name, String description, String date, String time/*, Uri media*/) {
         // create the object
-        Note note = new Note(name, description, date/*, media*/);
+        Note note = new Note(name, description, date, time/*, media*/);
 
         // obtain a database connection
         SQLiteDatabase database = this.getWritableDatabase();
@@ -59,7 +60,9 @@ public class NoteDBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("name", note.getName());
         values.put("description", note.getDescription());
-        values.put("date", note.getDate().toString());
+        values.put("date", note.getDate());
+        values.put("time", note.getTime());
+
 //        values.put("media", note.getMedia());
         long id = database.insert(TABLE_NAME, null, values);
 
@@ -76,15 +79,16 @@ public class NoteDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
 
         // retrieve the note from the database
-        String[] columns = new String[] { "name", "description", "date"/*, "media"*/};
+        String[] columns = new String[] { "name", "description", "date", "time"/*, "media"*/};
         Cursor cursor = database.query(TABLE_NAME, columns, "_id = ?", new String[] { "" + id }, "", "", "");
         if (cursor.getCount() >= 1) {
             cursor.moveToFirst();
             String name = cursor.getString(0);
             String description = cursor.getString(1);
             String date = cursor.getString(2);
+            String time = cursor.getString(3);
             /*Uri media = cursor.getMedia(3);*/
-            note = new Note(name, description, date/*, media*/);
+            note = new Note(name, description, date, time/*, media*/);
             note.setId(id);
         }
 
@@ -100,7 +104,7 @@ public class NoteDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
 
         // retrieve the note from the database
-        String[] columns = new String[] { "_id", "firstName", "lastName", "date"/*, "media"*/};
+        String[] columns = new String[] { "_id", "firstName", "lastName", "date", "time"/*, "media"*/};
         Cursor cursor = database.query(TABLE_NAME, columns, "", new String[]{}, "", "", "");
         cursor.moveToFirst();
         do {
@@ -109,7 +113,8 @@ public class NoteDBHelper extends SQLiteOpenHelper {
             String name = cursor.getString(1);
             String description = cursor.getString(2);
             String date = cursor.getString(3);
-            Note note = new Note(name, description, date);
+            String time = cursor.getString(4);
+            Note note = new Note(name, description, date, time);
             note.setId(id);
 
             // add the current note to the list
@@ -132,6 +137,7 @@ public class NoteDBHelper extends SQLiteOpenHelper {
         values.put("name", note.getName());
         values.put("description", note.getDescription());
         values.put("date", note.getDate());
+        values.put("time", note.getTime());
         int numRowsAffected = database.update(TABLE_NAME, values, "_id = ?", new String[] { "" + note.getId() });
 
         Log.i("DatabaseAccess", "updateNote(" + note + "):  numRowsAffected: " + numRowsAffected);

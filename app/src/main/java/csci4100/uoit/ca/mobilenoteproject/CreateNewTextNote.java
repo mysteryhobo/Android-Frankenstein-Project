@@ -44,6 +44,7 @@ public class CreateNewTextNote extends AppCompatActivity implements DatePickerDi
 
     private String mCurrentPhotoPath;
     private String selectedImagePath;
+    private NoteDBHelper dbHelper;
 
 
     @Override
@@ -73,6 +74,23 @@ public class CreateNewTextNote extends AppCompatActivity implements DatePickerDi
                 popupWindow.showAsDropDown(btnOpenPopup, 50, -30);
             }
         });
+
+        dbHelper = new NoteDBHelper(this);
+
+        Date date = new Date();
+        String currDate = date.toString();
+        String[] dateparts = currDate.split(" ");
+        String dayOfWeek = dateparts[0];
+        String month = dateparts[1];
+        String day = dateparts[2];
+        String time = dateparts[3];
+        String year = dateparts[5];
+
+        EditText dateText = (EditText) findViewById(R.id.EditText_date);
+        dateText.setText(formatDate(date, Integer.valueOf(year)));
+
+        EditText timeText = (EditText) findViewById(R.id.EditText_time);
+        timeText.setText(time);
     }
 
     @Override
@@ -99,8 +117,22 @@ public class CreateNewTextNote extends AppCompatActivity implements DatePickerDi
 
     public void submitNote (View btn) {
         returnNewNoteIntent = new Intent();
-        EditText noteText = (EditText) findViewById(R.id.EditText_CreateNewNotePage);
-        returnNewNoteIntent.putExtra("noteTextResult", noteText.getText().toString());
+
+
+        EditText nameText = (EditText) findViewById(R.id.EditText_enterName);
+        String name = nameText.getText().toString();
+
+        EditText dateText = (EditText) findViewById(R.id.EditText_date);
+        String date = nameText.getText().toString();
+
+        EditText timeText = (EditText) findViewById(R.id.EditText_time);
+        String time = nameText.getText().toString();
+
+        EditText descriptionText = (EditText) findViewById(R.id.EditText_description);
+        String description = nameText.getText().toString();
+
+        Note newNote = dbHelper.createNote(name, description, date, time);
+
         setResult(RESULT_OK, returnNewNoteIntent);
         finish();
     }

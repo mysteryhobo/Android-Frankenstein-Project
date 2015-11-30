@@ -8,7 +8,7 @@
     tools:context="csci4100.uoit.ca.mobilenoteproject.CreateNewTextNote">
 
     <EditText
-        android:id="@+id/EditText_CreateNewNotePage"
+        android:id="@+id/EditText_description"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:hint="@string/editTxt_NewTExtNoteHint_NewTextNotePage"
@@ -53,7 +53,6 @@
         android:ems="10"
         android:id="@+id/EditText_date"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/EditText_CreateNewNotePage"
         android:layout_marginTop="37dp"
         android:layout_toEndOf="@+id/lblAttach" />
 

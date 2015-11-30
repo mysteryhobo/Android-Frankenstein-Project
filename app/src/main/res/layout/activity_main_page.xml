@@ -12,16 +12,14 @@
         android:text="@string/btn_newNote_mainPage"
         android:onClick="createNewTextNote"/>
 
-    <TextView
-        android:id="@+id/textView_mainPage"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:text="temp Text box to test Create new text note class"
-        />
+    <ListView
+        android:id="@+id/noteListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:dividerHeight="0.1dp"
+        android:divider="#0000CC"
+        >
+    </ListView>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/img_testNoteImage_mainPage" />
 
 </LinearLayout>

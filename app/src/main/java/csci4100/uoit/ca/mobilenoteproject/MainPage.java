@@ -2,28 +2,25 @@ package csci4100.uoit.ca.mobilenoteproject;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.media.Image;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.util.Iterator;
+import android.widget.ListView;
 
 public class MainPage extends AppCompatActivity {
 
     private static final int CREATE_NEW_TEXT_NOTE_REQUEST_CODE = 1;
+    ListView noteList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
+        noteList = (ListView) findViewById(R.id.noteListView);
+
     }
 
     @Override
@@ -52,6 +49,10 @@ public class MainPage extends AppCompatActivity {
             Intent intent = new Intent(this,LoginScreen.class);
             startActivity(intent);
         }
+        if (id == R.id.audioLectures) {
+            Intent intent = new Intent(this,ShowAudioLectures.class);
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -60,12 +61,11 @@ public class MainPage extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CREATE_NEW_TEXT_NOTE_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
-                TextView newNoteText = (TextView) findViewById(R.id.textView_mainPage);
-                newNoteText.setText(data.getStringExtra("noteTextResult"));
+//                TextView newNoteText = (TextView) findViewById(R.id.textView_mainPage);
 
-                Uri imageUri = data.getParcelableExtra("imageUri");
-                ImageView noteImg = (ImageView) findViewById(R.id.img_testNoteImage_mainPage);
-                noteImg.setImageURI(imageUri);
+//                Uri imageUri = data.getParcelableExtra("imageUri");
+//                ImageView noteImg = (ImageView) findViewById(R.id.img_testNoteImage_mainPage);
+//                noteImg.setImageURI(imageUri);
 //                noteImg.setImageBitmap((Bitmap) data.getParcelableExtra("BitmapImage"));
             }
         }
