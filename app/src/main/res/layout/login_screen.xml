@@ -46,6 +46,7 @@
         android:layout_height="50dp"
         android:id="@+id/imageButton"
         android:background="@drawable/imgbtn_signin"
+        android:onClick="loginAuthenticate"
 
         />
 

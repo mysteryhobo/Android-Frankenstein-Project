@@ -3,6 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
+    useLibrary 'org.apache.http.legacy'
+
     defaultConfig {
         applicationId "csci4100.uoit.ca.mobilenoteproject"
         minSdkVersion 17
