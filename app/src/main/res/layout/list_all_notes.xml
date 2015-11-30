@@ -19,6 +19,13 @@
         android:id="@+id/button"
         android:onClick="showCourses"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Audio Lectures Test"
+        android:id="@+id/button2"
+        android:onClick="showAudioLectures"/>
+
     <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"

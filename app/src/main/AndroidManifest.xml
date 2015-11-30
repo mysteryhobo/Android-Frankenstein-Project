@@ -17,13 +17,13 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainPage"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".CreateNewTextNote"
-            android:label="@string/title_activity_create_new_text_note"></activity>
+            android:label="@string/title_activity_create_new_text_note" />
         <activity
             android:name=".AttachPopup"
-            android:label="@string/title_activity_attach_popup"></activity>
+            android:label="@string/title_activity_attach_popup" />
         <activity
             android:name=".LoginScreen"
             android:label="@string/title_activity_login">
@@ -36,7 +36,7 @@
         <activity
             android:name=".ShowAudioLectures"
             android:label="@string/title_activity_audio_lectures"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".NotePrompt"
             android:label="@string/title_activity_note_prompt"
@@ -44,6 +44,10 @@
         <activity
             android:name=".ShowClasses"
             android:label="@string/title_activity_show_classes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditNote"
+            android:label="@string/title_activity_edit_note"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

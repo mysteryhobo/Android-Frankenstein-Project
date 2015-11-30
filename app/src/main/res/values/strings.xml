@@ -24,4 +24,7 @@
     <string name="title_activity_show_classes">ShowClasses</string>
     <string name="lbl_classesTitle">Classes:</string>
     <string name="lbl_defaultcourseName">Course 1</string>
+    <string name="title_activity_edit_note">EditNote</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_delete">Delete</string>
 </resources>
