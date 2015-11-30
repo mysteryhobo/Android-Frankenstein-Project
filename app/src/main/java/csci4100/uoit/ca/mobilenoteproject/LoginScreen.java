@@ -33,7 +33,7 @@ public class LoginScreen extends AppCompatActivity {
     EditText studentID;
     EditText passwordEnter;
 
-
+    String peterpush;
     private ProgressDialog loginDialog;
 
     // JSON class parser
