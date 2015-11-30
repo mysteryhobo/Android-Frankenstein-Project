@@ -12,6 +12,13 @@
         android:text="@string/btn_newNote_mainPage"
         android:onClick="createNewTextNote"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Courses Test"
+        android:id="@+id/button"
+        android:onClick="showCourses"/>
+
     <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="csci4100.uoit.ca.mobilenoteproject" >
+    package="csci4100.uoit.ca.mobilenoteproject">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -14,23 +14,19 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainPage"
-            android:label="@string/app_name" >
-           
-        </activity>
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".CreateNewTextNote"
-            android:label="@string/title_activity_create_new_text_note" >
-        </activity>
+            android:label="@string/title_activity_create_new_text_note"></activity>
         <activity
             android:name=".AttachPopup"
-            android:label="@string/title_activity_attach_popup" >
-        </activity>
+            android:label="@string/title_activity_attach_popup"></activity>
         <activity
             android:name=".LoginScreen"
-            android:label="@string/title_activity_login" >
+            android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,12 +36,15 @@
         <activity
             android:name=".ShowAudioLectures"
             android:label="@string/title_activity_audio_lectures"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity android:name=".NotePrompt"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".NotePrompt"
             android:label="@string/title_activity_note_prompt"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ShowClasses"
+            android:label="@string/title_activity_show_classes"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

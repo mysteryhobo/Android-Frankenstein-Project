@@ -1,8 +1,6 @@
 package csci4100.uoit.ca.mobilenoteproject;
 
 import android.content.Context;
-import android.media.AudioDeviceInfo;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +10,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Peter on 29/11/15.
+ * Created by Peter on 30/11/15.
  */
-public class AudioLectureAdaptor extends BaseAdapter {
+public class CourseAdaptor extends BaseAdapter{
     private Context context;
-    private ArrayList<AudioLecture> data;
+    private ArrayList<Course> data;
 
-    public AudioLectureAdaptor(Context context, ArrayList<AudioLecture> data) {
+    public CourseAdaptor(Context context, ArrayList<Course> data) {
         this.data = data;
         this.context = context;
     }
@@ -36,15 +34,15 @@ public class AudioLectureAdaptor extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        AudioLecture lecToDisplay = data.get(position);
+        Course courseToDisplay = data.get(position);
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.list_view_audio_item, parent, false);
+            convertView = inflater.inflate(R.layout.list_view_course_item, parent, false);
         }
-        TextView audioTextName = (TextView) convertView.findViewById(R.id.lectureName);
-        audioTextName.setText(lecToDisplay.getName());
+        TextView courseTextName = (TextView) convertView.findViewById(R.id.lbl_courseName);
+        courseTextName.setText(courseToDisplay.getName());
         return convertView;
     }
-}
 
+}

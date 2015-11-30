@@ -150,6 +150,13 @@ public class MainPage extends ListActivity {
     }
 
 
+    public void showCourses(View view) {
+        Intent showNotesIntent = new Intent(this, ShowClasses.class);
+        startActivity(showNotesIntent);
+
+    }
+
+
     class LoadAllNotes extends AsyncTask<String, String, String> {
 
 

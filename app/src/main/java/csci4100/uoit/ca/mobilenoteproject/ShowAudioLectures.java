@@ -6,17 +6,35 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShowAudioLectures extends AppCompatActivity {
     MediaPlayer mediaPlayer;
+    private boolean playingStatus = false;
+
+    public void listRaw(ArrayList<AudioLecture> lectureList){
+        Field[] fields=R.raw.class.getFields();
+        for(int count=0; count < fields.length; count++){
+            Log.i("Raw Asset: ", fields[count].getName());
+            try{
+                int resourceID=fields[count].getInt(fields[count]);
+                AudioLecture lect = new AudioLecture(fields[count].getName());
+                lectureList.add(lect);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,29 +43,70 @@ public class ShowAudioLectures extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         ArrayList<AudioLecture> lectures = new ArrayList<>();
-        AudioLecture lecture1 = new AudioLecture("French lecture 1");
-        lectures.add(lecture1);
-
-        AudioLecture lecture2 = new AudioLecture("French Lecture 2");
-        lectures.add(lecture2);
-
-        AudioLecture lecture3 = new AudioLecture("French Lecture 3");
-        lectures.add(lecture3);
+        listRaw(lectures);
+//        AudioLecture lecture1 = new AudioLecture("French 1");
+//        lectures.add(lecture1);
+//
+//        AudioLecture lecture2 = new AudioLecture("French 2");
+//        lectures.add(lecture2);
+//
+//        AudioLecture lecture3 = new AudioLecture("French 3");
+//        lectures.add(lecture3);
 
         AudioLectureAdaptor adaptor = new AudioLectureAdaptor(this, lectures);
         ListView lecturesList = (ListView) findViewById(R.id.lecturesListView);
         lecturesList.setAdapter(adaptor);
 
-//        lecturesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view,
-//                                    int position, long id) {
-//                switch (position) {
-//                    case 1: mediaPlayer = MediaPlayer.create(context, R.raw.sound_file_1);
-//                }
-//            }
-//        });
+        mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.frenchlesson1);
+
+
+        lecturesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                switch (position) {
+                    case 0:
+                        if (!playingStatus) {
+                            mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.frenchlesson1);
+                            mediaPlayer.start();
+                            playingStatus = true;
+                            Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
+                            toast.show();
+                        } else {
+                            mediaPlayer.stop();
+                            playingStatus = false;
+                        }
+                        break;
+                    case 1:
+                        if (!playingStatus) {
+                            mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.frenchlesson2);
+                            mediaPlayer.start();
+                            playingStatus = true;
+                            Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
+                            toast.show();
+                        } else {
+                            mediaPlayer.stop();
+                            playingStatus = false;
+                        }
+                        break;
+                    case 2:
+                        if (!playingStatus) {
+                            mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.frenchlesson3);
+                            mediaPlayer.start();
+                            playingStatus = true;
+                            Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
+                            toast.show();
+                        } else {
+                            mediaPlayer.stop();
+                            playingStatus = false;
+                        }
+                        break;
+                }
+            }
+        });
 
 
 

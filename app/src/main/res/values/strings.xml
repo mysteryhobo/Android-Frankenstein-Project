@@ -21,4 +21,7 @@
     <string name="lectureName">Lecture1</string>
     <string name="menuItem_audioLectures">Audio Lectures</string>
     <string name="title_activity_note_prompt">Note Prompt</string>
+    <string name="title_activity_show_classes">ShowClasses</string>
+    <string name="lbl_classesTitle">Classes:</string>
+    <string name="lbl_defaultcourseName">Course 1</string>
 </resources>
