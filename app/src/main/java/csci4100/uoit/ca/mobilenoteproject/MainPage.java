@@ -153,11 +153,7 @@ public class MainPage extends ListActivity {
     public void showCourses(View view) {
         Intent showNotesIntent = new Intent(this, ShowClasses.class);
         startActivity(showNotesIntent);
-    }
 
-    public void showAudioLectures(View view) {
-        Intent showNotesIntent = new Intent(this, ShowAudioLectures.class);
-        startActivity(showNotesIntent);
     }
 
 

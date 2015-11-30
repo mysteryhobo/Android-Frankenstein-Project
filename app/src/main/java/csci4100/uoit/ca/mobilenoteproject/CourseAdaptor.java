@@ -38,10 +38,10 @@ public class CourseAdaptor extends BaseAdapter{
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.list_view_course_item, parent, false);
+            convertView = inflater.inflate(R.layout.list_class, parent, false);
         }
-        TextView courseTextName = (TextView) convertView.findViewById(R.id.lbl_courseName);
-        courseTextName.setText(courseToDisplay.getName());
+        //TextView courseTextName = (TextView) convertView.findViewById(R.id.lbl_courseName);
+        //courseTextName.setText(courseToDisplay.getName());
         return convertView;
     }
 

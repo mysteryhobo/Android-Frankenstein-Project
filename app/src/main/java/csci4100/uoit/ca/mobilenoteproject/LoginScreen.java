@@ -113,7 +113,7 @@ public class LoginScreen extends AppCompatActivity {
                 // json success tag
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
-                        Intent loginSuccess = new Intent(getApplicationContext(), MainPage.class);
+                        Intent loginSuccess = new Intent(getApplicationContext(), ShowClasses.class);
                         loginSuccess.putExtra("StudentID", student);
                         startActivity(loginSuccess);
 
