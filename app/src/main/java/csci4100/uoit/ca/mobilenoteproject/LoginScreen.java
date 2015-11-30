@@ -57,9 +57,19 @@ public class LoginScreen extends AppCompatActivity {
 
     public void loginAuthenticate(View v) {
 
-        if (studentID != null && passwordEnter != null) {
+        String checkID = studentID.getText().toString();
+        String checkPass = passwordEnter.getText().toString();
+        if (checkID != null && checkPass != null) {
             new LoginAuthenticate().execute();
+        } else{
+            Context context = getApplicationContext();
+            CharSequence text = "Please Enter Information";
+            int duration = Toast.LENGTH_LONG;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
         }
+
     }
 
     /* Background Async Task
