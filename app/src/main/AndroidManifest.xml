@@ -42,7 +42,10 @@
             android:label="@string/title_activity_audio_lectures"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        
+        <activity android:name=".NotePrompt"
+            android:label="@string/title_activity_note_prompt"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>

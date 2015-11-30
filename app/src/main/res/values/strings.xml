@@ -20,4 +20,5 @@
     <string name="lecturesTitle">Lectures</string>
     <string name="lectureName">Lecture1</string>
     <string name="menuItem_audioLectures">Audio Lectures</string>
+    <string name="title_activity_note_prompt">Note Prompt</string>
 </resources>
