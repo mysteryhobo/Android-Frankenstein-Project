@@ -1,5 +1,6 @@
 package csci4100.uoit.ca.mobilenoteproject;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -21,6 +22,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 /**
  * Created by mkcy on 11/29/2015.
  */
@@ -64,6 +67,7 @@ public class LoginScreen extends AppCompatActivity {
      */
     class LoginAuthenticate extends AsyncTask<String, String, String> {
 
+        int flag = 0;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -99,10 +103,12 @@ public class LoginScreen extends AppCompatActivity {
                 // json success tag
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
+                        Intent intent = new Intent(getApplicationContext(), MainPage.class);
+                        startActivity(intent);
 
 
                 } else {
-                    // product with pid not found
+                    flag = 1;
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -119,6 +125,16 @@ public class LoginScreen extends AppCompatActivity {
         protected void onPostExecute(String file_url) {
             // dismiss the dialog once got all details
             loginDialog.dismiss();
+
+            if (flag == 1) {
+                Context context = getApplicationContext();
+                CharSequence text = "Incorrect Username or Password";
+                int duration = Toast.LENGTH_LONG;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+
         }
     }
 }

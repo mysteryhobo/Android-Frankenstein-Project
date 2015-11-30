@@ -26,6 +26,7 @@
         android:id="@+id/editText_student_id"
         android:hint="@string/editTextHint_studentID"
         android:paddingStart="70dp"
+        android:inputType="numberDecimal"
         />
 
 
