@@ -17,10 +17,10 @@
         android:layout_above="@+id/lblAttach" />
 
     <EditText
-        android:id="@+id/EditText_enterName"
+        android:id="@+id/EditText_enterTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/editTxt_noteName"/>
+        android:hint="@string/editTxt_noteTitle"/>
 
     <TextView
         android:id="@+id/lblAttach"
@@ -78,7 +78,8 @@
         android:text="@string/btn_SubmitNoteText_CreatNewTextNotePage"
         android:onClick="submitNote"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        />
 
     <Button
         android:layout_width="wrap_content"

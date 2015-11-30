@@ -12,7 +12,7 @@
     <string name="title_activity_attach_popup">AttachPopup</string>
     <string name="editTextHint_enterTime">Enter time</string>
     <string name="editTextHint_enterDate">Enter date</string>
-    <string name="editTxt_noteName">Enter note name</string>
+    <string name="editTxt_noteTitle">Enter note title</string>
     <string name="editTextHint_password">Enter Password</string>
     <string name="editTextHint_studentID">Enter Student ID</string>
     <string name="title_activity_login">Login</string>

@@ -1,12 +1,14 @@
 package csci4100.uoit.ca.mobilenoteproject;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.DialogFragment;
@@ -24,12 +26,20 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CreateNewTextNote extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
@@ -38,19 +48,32 @@ public class CreateNewTextNote extends AppCompatActivity implements DatePickerDi
     static final int REQUEST_IMAGE_CAPTURE = 6;
     private boolean imageAdded = false;
 
+
+    EditText nameText;
+
+
+    EditText descriptionText;
     private Bitmap image;
 
     private Intent returnNewNoteIntent;
 
     private String mCurrentPhotoPath;
     private String selectedImagePath;
-    private NoteDBHelper dbHelper;
 
+    // JSON class parser
+    JSONParser jsonParser = new JSONParser();
+
+    // url to login authentication
+    private static final String url_insert_textnote = "http://lifenote.ca/mobile/database/insert_textnote.php";
+
+    private static final String TAG_SUCCESS = "success";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_text_note);
+
+
 
         final ImageButton btnOpenPopup = (ImageButton)findViewById(R.id.openpopup);
         btnOpenPopup.setOnClickListener(new ImageButton.OnClickListener() {
@@ -75,7 +98,7 @@ public class CreateNewTextNote extends AppCompatActivity implements DatePickerDi
             }
         });
 
-        dbHelper = new NoteDBHelper(this);
+
 
         Date date = new Date();
         String currDate = date.toString();
@@ -118,24 +141,98 @@ public class CreateNewTextNote extends AppCompatActivity implements DatePickerDi
     public void submitNote (View btn) {
         returnNewNoteIntent = new Intent();
 
+        nameText = (EditText) findViewById(R.id.EditText_enterTitle);
 
-        EditText nameText = (EditText) findViewById(R.id.EditText_enterName);
-        String name = nameText.getText().toString();
+        descriptionText = (EditText) findViewById(R.id.EditText_description);
 
-        EditText dateText = (EditText) findViewById(R.id.EditText_date);
-        String date = nameText.getText().toString();
 
-        EditText timeText = (EditText) findViewById(R.id.EditText_time);
-        String time = nameText.getText().toString();
+        if (nameText != null) {
 
-        EditText descriptionText = (EditText) findViewById(R.id.EditText_description);
-        String description = nameText.getText().toString();
+            new InsertNote().execute();
 
-        Note newNote = dbHelper.createNote(name, description, date, time);
+        }
 
-        setResult(RESULT_OK, returnNewNoteIntent);
-        finish();
+
     }
+
+
+    class InsertNote extends AsyncTask<String, String, String> {
+
+        int flag = 0;
+
+        protected String doInBackground(String... args) {
+
+            String title = nameText.getText().toString();
+            String description = descriptionText.getText().toString();
+            String studentID = getIntent().getStringExtra("StudentID");
+
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("studentID", studentID));
+            params.add(new BasicNameValuePair("title", title));
+            params.add(new BasicNameValuePair("description", description));
+            // updating UI from Background Thread
+
+            // Check for success tag
+            int success;
+            try {
+                // Building Parameters
+                // getting product details by making HTTP request
+                // Note that product details url will use GET request
+                JSONObject json = jsonParser.makeHttpRequest(
+                        url_insert_textnote, "POST", params);
+
+                // check your log for json response
+                Log.d("Note Creation", json.toString());
+
+                // json success tag
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+
+                    setResult(RESULT_OK, returnNewNoteIntent);
+                    finish();
+
+
+                } else {
+                    flag = 1;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+
+            return null;
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog once got all details
+
+
+            if (flag == 1) {
+                Context context = getApplicationContext();
+                CharSequence text = "Note not created";
+                int duration = Toast.LENGTH_LONG;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     public void showTimePickerDialog(View v) {
         DialogFragment newFragment = new TimePickerFragment();

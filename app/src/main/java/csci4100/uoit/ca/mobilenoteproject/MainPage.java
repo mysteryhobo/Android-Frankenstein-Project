@@ -73,6 +73,9 @@ public class MainPage extends AppCompatActivity {
 
     public void createNewTextNote(View btn) {
         Intent createNewTextNoteIntent = new Intent(this, CreateNewTextNote.class);
+
+        String student = getIntent().getStringExtra("StudentID");
+        createNewTextNoteIntent.putExtra("StudentID", student);
         startActivityForResult(createNewTextNoteIntent, CREATE_NEW_TEXT_NOTE_REQUEST_CODE);
     }
 }
