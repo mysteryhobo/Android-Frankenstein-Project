@@ -24,6 +24,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
         android:id="@+id/editText_student_id"
+        android:text="123456789"
         android:hint="@string/editTextHint_studentID"
         android:paddingStart="70dp"
         android:inputType="numberDecimal"
@@ -37,6 +38,7 @@
         android:layout_height="50dp"
         android:id="@+id/editText_password"
         android:hint="@string/editTextHint_password"
+        android:text="autobots"
         android:paddingStart="70dp"
         android:layout_marginBottom="15dp"
 

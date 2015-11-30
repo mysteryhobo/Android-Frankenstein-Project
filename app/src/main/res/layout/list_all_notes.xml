@@ -15,11 +15,11 @@
     <ListView
         android:id="@+id/noteListView"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:dividerHeight="0.1dp"
         android:divider="#0000CC"
-        >
-    </ListView>
+        />
+
 
 
 </LinearLayout>
