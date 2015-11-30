@@ -42,8 +42,9 @@
                 android:layout_marginRight="5dp"
                 android:layout_gravity="right"
                 android:text="Gallery"
+                android:id="@+id/gallery"
                 android:src="@drawable/galleryicon"
-                android:onClick="dispatchSelectPictureIntent"/>
+                android:onClick="accessGallery"/>
 
             <ImageButton
                 android:layout_width="wrap_content"
