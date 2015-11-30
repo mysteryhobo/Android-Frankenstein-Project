@@ -119,6 +119,13 @@ public class MainPage extends ListActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CREATE_NEW_TEXT_NOTE_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
+
+
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+
+
 //                TextView newNoteText = (TextView) findViewById(R.id.textView_mainPage);
 
 //                Uri imageUri = data.getParcelableExtra("imageUri");
