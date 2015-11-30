@@ -13,7 +13,7 @@
         android:onClick="createNewTextNote"/>
 
     <ListView
-        android:id="@+id/noteListView"
+        android:id="@android:id/list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:dividerHeight="0.1dp"

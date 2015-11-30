@@ -59,7 +59,7 @@ public class MainPage extends ListActivity {
         noteList = new ArrayList<HashMap<String, String>>();
 
         new LoadAllNotes().execute();
-        list = (ListView) findViewById(R.id.noteListView);
+        list = getListView();
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
