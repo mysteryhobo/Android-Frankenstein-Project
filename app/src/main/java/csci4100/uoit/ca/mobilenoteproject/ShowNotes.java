@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -27,7 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class MainPage extends ListActivity {
+public class ShowNotes extends ListActivity {
 
     private static final int CREATE_NEW_TEXT_NOTE_REQUEST_CODE = 1;
     private static final int NOTE_PROMPT_REQUEST_CODE = 2;
@@ -220,7 +219,7 @@ public class MainPage extends ListActivity {
                      * Updating parsed JSON data into ListView
                      * */
                     ListAdapter adapter = new SimpleAdapter(
-                            MainPage.this, noteList,
+                            ShowNotes.this, noteList,
                             R.layout.list_note, new String[]{TAG_NOTE_PK,
                             TAG_TITLE},
                             new int[]{R.id.note_pk, R.id.title});

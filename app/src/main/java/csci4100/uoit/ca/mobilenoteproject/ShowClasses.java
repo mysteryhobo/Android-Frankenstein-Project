@@ -70,7 +70,7 @@ public class ShowClasses extends ListActivity {
 
                 // Starting new intent
                 Intent in = new Intent(getApplicationContext(),
-                        MainPage.class);
+                        ShowNotes.class);
                 String student = getIntent().getStringExtra("StudentID");
                 // sending note_pk to next activity
                 in.putExtra(TAG_CLASS_PK, class_pk);
