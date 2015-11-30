@@ -75,4 +75,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgView"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_CancelNewNote_CreatNewTextNotePage"
+        android:id="@+id/btn_cancelNewNote"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/imgView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_SubmitNoteText_CreatNewTextNotePage"
+        android:id="@+id/btn_submitNewNote"
+        android:layout_alignTop="@+id/openpopup"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
