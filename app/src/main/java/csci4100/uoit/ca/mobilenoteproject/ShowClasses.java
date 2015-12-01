@@ -138,6 +138,11 @@ public class ShowClasses extends ListActivity {
         }
     }
 
+    public void viewContent(View view) {
+        Intent viewContentIntent = new Intent(this, AttachPopup.class);
+        startActivity(viewContentIntent);
+    }
+
 
 
     class LoadAllClasses extends AsyncTask<String, String, String> {
