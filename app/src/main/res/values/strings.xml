@@ -34,4 +34,5 @@
     <string name="lbl_noteDescrption">Note Description</string>
     <string name="btn_viewContent">View Content</string>
     <string name="btn_showAudioLectures">Show Audio Lectures</string>
+    <string name="audio">Show Audio Lectures Test</string>
 </resources>
