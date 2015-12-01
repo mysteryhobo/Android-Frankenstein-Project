@@ -31,7 +31,8 @@
                 android:layout_gravity="right"
                 android:text="Dismiss"
                 android:src="@drawable/dismissbtn"
-                android:id="@+id/dismiss"/>
+                android:id="@+id/dismiss"
+                android:onClick="endPopup"/>
 
             <ImageButton
                 android:layout_width="wrap_content"

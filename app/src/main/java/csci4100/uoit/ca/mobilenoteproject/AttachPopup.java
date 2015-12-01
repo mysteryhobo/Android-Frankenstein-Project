@@ -22,6 +22,7 @@ import java.util.List;
 public class AttachPopup extends AppCompatActivity {
 
     private static int RESULT_LOAD_IMAGE = 1;
+    static final int REQUEST_IMAGE_CAPTURE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +100,18 @@ public class AttachPopup extends AppCompatActivity {
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
             }
         });
+    }
+
+
+    public void dispatchTakePictureIntent(View view) {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    public void endPopup(View view) {
+        finish();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
