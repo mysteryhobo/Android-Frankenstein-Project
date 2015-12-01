@@ -1,9 +1,12 @@
 package csci4100.uoit.ca.mobilenoteproject;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -25,6 +28,7 @@ public class NotePrompt extends AppCompatActivity {
 
     TextView txtTitle;
     TextView txtDesc;
+    private static final int EDIT_NOTE_REQUEST_CODE = 1;
 
     // JSON parser class
     JSONParser jsonParser = new JSONParser();
@@ -39,12 +43,25 @@ public class NotePrompt extends AppCompatActivity {
     private static final String TAG_TITLE = "title";
     private static final String TAG_TEXT = "text";
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_note);
 
         new GetNote().execute();
 
+
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == EDIT_NOTE_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                // refresh
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        }
 
     }
 
@@ -115,6 +132,19 @@ public class NotePrompt extends AppCompatActivity {
             txtDesc.setText(text);
 
         }
+    }
+
+    public void editNote(View v) {
+        editNote();
+    }
+
+    private void editNote() {
+        Intent editNote = new Intent(this, EditNote.class);
+
+        String note_pk = getIntent().getStringExtra("note_pk");
+        editNote.putExtra("note_pk",note_pk);
+
+        startActivityForResult(editNote, EDIT_NOTE_REQUEST_CODE);
     }
 }
 
