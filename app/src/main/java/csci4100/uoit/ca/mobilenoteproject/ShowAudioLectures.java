@@ -21,6 +21,7 @@ import java.util.List;
 public class ShowAudioLectures extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     private boolean playingStatus = false;
+    ArrayList<MediaPlayer> listOfPlayers = new ArrayList<MediaPlayer>();
 
     public void listRaw(ArrayList<AudioLecture> lectureList){
         Field[] fields=R.raw.class.getFields();
@@ -30,6 +31,8 @@ public class ShowAudioLectures extends AppCompatActivity {
                 int resourceID=fields[count].getInt(fields[count]);
                 AudioLecture lect = new AudioLecture(fields[count].getName());
                 lectureList.add(lect);
+                MediaPlayer newPlayer = MediaPlayer.create(getBaseContext(), fields[count].getInt(fields[count]));
+                listOfPlayers.add(newPlayer);
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -67,48 +70,59 @@ public class ShowAudioLectures extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                switch (position) {
-                    case 0:
-                        if (!playingStatus) {
-                            mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.frenchlesson1);
-                            mediaPlayer.start();
-                            playingStatus = true;
-                            Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
-                            toast.show();
-                        } else {
-                            mediaPlayer.stop();
-                            playingStatus = false;
-                        }
-                        break;
-                    case 1:
-                        if (!playingStatus) {
-                            mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.frenchlesson2);
-                            mediaPlayer.start();
-                            playingStatus = true;
-                            Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
-                            toast.show();
-                        } else {
-                            mediaPlayer.stop();
-                            playingStatus = false;
-                        }
-                        break;
-                    case 2:
-                        if (!playingStatus) {
-                            mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.frenchlesson3);
-                            mediaPlayer.start();
-                            playingStatus = true;
-                            Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
-                            toast.show();
-                        } else {
-                            mediaPlayer.stop();
-                            playingStatus = false;
-                        }
-                        break;
-                }
+
+                    mediaPlayer = listOfPlayers.get(position);
+//                            mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.frenchlesson1);
+                    mediaPlayer.start();
+                    Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
+                    toast.show();
+
+
+//
+//                switch (position) {
+//                    case 0:
+//                        if (!playingStatus) {
+//                            mediaPlayer = listOfPlayers.get(0);
+////                            mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.frenchlesson1);
+//                            mediaPlayer.start();
+//                            playingStatus = true;
+//                            Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
+//                            toast.show();
+//                        } else {
+//                            mediaPlayer.stop();
+//                            playingStatus = false;
+//                        }
+//                        break;
+//                    case 1:
+//                        if (!playingStatus) {
+//                            mediaPlayer = listOfPlayers.get(1);
+//                            mediaPlayer.start();
+//                            playingStatus = true;
+//                            Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
+//                            toast.show();
+//                        } else {
+//                            mediaPlayer.stop();
+//                            playingStatus = false;
+//                        }
+//                        break;
+//                    case 2:
+//                        if (!playingStatus) {
+//                            mediaPlayer = listOfPlayers.get(2);
+//                            mediaPlayer.start();
+//                            playingStatus = true;
+//                            Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
+//                            toast.show();
+//                        } else {
+//                            mediaPlayer.stop();
+//                            playingStatus = false;
+//                        }
+//                        break;
+//                }
             }
         });
 
-
-
+    }
+    public void stopPlayer (View view) {
+        mediaPlayer.stop();
     }
 }
