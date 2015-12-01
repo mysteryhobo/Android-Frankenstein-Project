@@ -10,13 +10,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="csci4100.uoit.ca.mobilenoteproject.EditNote"
-    tools:showIn="@layout/activity_edit_note">
+    tools:showIn="@layout/activity_edit_note"
+    android:background="#0081af">
 
     <EditText
         android:id="@+id/EditText_enterTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/editTxt_noteTitle"/>
+        android:hint="@string/editTxt_noteTitle"
+        android:textColor="#fff"
+        android:textColorHint="#fff"/>
 
     <EditText
         android:id="@+id/EditText_description"
@@ -25,7 +28,10 @@
         android:hint="@string/editTxt_NewTExtNoteHint_NewTextNotePage"
         android:layout_below="@+id/EditText_time"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/button3" />
+        android:layout_above="@+id/button3"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        android:gravity="top|left"/>
 
 
 
@@ -48,13 +54,17 @@
 
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_save"
         android:id="@+id/button3"
         android:layout_above="@+id/openpopup"
         android:layout_alignParentEnd="true"
-        android:onClick="updateNote"/>
+        android:onClick="updateNote"
+        android:background="#028b00"
+        android:textSize="25sp"
+        android:textColor="#fff"
+        />
 
 
 
