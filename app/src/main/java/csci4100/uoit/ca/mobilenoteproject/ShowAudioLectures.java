@@ -72,52 +72,8 @@ public class ShowAudioLectures extends AppCompatActivity {
                                     int position, long id) {
 
                     mediaPlayer = listOfPlayers.get(position);
-//                            mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.frenchlesson1);
                     mediaPlayer.start();
-                    Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
-                    toast.show();
 
-
-//
-//                switch (position) {
-//                    case 0:
-//                        if (!playingStatus) {
-//                            mediaPlayer = listOfPlayers.get(0);
-////                            mediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.frenchlesson1);
-//                            mediaPlayer.start();
-//                            playingStatus = true;
-//                            Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
-//                            toast.show();
-//                        } else {
-//                            mediaPlayer.stop();
-//                            playingStatus = false;
-//                        }
-//                        break;
-//                    case 1:
-//                        if (!playingStatus) {
-//                            mediaPlayer = listOfPlayers.get(1);
-//                            mediaPlayer.start();
-//                            playingStatus = true;
-//                            Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
-//                            toast.show();
-//                        } else {
-//                            mediaPlayer.stop();
-//                            playingStatus = false;
-//                        }
-//                        break;
-//                    case 2:
-//                        if (!playingStatus) {
-//                            mediaPlayer = listOfPlayers.get(2);
-//                            mediaPlayer.start();
-//                            playingStatus = true;
-//                            Toast toast = Toast.makeText(getBaseContext(), "Press Again to Stop", Toast.LENGTH_SHORT);
-//                            toast.show();
-//                        } else {
-//                            mediaPlayer.stop();
-//                            playingStatus = false;
-//                        }
-//                        break;
-//                }
             }
         });
 
