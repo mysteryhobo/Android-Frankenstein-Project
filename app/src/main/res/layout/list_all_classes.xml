@@ -9,19 +9,23 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:id="@+id/layout_classes"
     tools:context="csci4100.uoit.ca.mobilenoteproject.ShowClasses"
+
     tools:showIn="@layout/activity_show_classes">
 
     <ListView
         android:id="@android:id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
         android:dividerHeight="0.1dp"
         android:divider="#0000CC"
         android:paddingTop="5sp"
         android:paddingBottom="15sp"
         android:layout_below="@+id/textView"
-        />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="41dp"
+        android:fastScrollEnabled="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,5 +35,14 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:text="@string/lbl_classesTitle"/>
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/btn_setbackgroud"-->
+        <!--android:id="@+id/btn_setBackground"-->
+        <!--android:onClick="accessGallery"-->
+        <!--android:layout_below="@android:id/list"-->
+        <!--android:layout_alignParentStart="true" />-->
 
 </RelativeLayout>

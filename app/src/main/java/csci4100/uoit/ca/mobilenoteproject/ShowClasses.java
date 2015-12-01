@@ -2,15 +2,23 @@ package csci4100.uoit.ca.mobilenoteproject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.app.ListActivity;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -20,6 +28,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,10 +39,9 @@ import java.util.List;
 public class ShowClasses extends ListActivity {
 
     private static final int SHOW_NOTES_REQUEST_CODE = 1;
+    private static int RESULT_LOAD_IMAGE = 2;
 
     JSONParser jParser = new JSONParser();
-    
-    
 
     ArrayList<HashMap<String, String>> classList;
     ListView list;
@@ -82,6 +92,13 @@ public class ShowClasses extends ListActivity {
         }); 
     }
 
+//    public void accessGallery(View view){
+//        Intent intent = new Intent();
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(Intent.createChooser(intent, "Select Picture"),2);
+//    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == SHOW_NOTES_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
@@ -96,6 +113,26 @@ public class ShowClasses extends ListActivity {
 //                noteImg.setImageURI(imageUri);
 //                noteImg.setImageBitmap((Bitmap) data.getParcelableExtra("BitmapImage"));
             }
+//            if (requestCode == RESULT_LOAD_IMAGE) {
+//                if (resultCode == Activity.RESULT_OK){
+//                    Uri uri = Uri.parse(data.getDataString());
+//                    File f = new File(getRealPathFromURI(uri));
+//                    Drawable d = Drawable.createFromPath(f.getAbsolutePath());
+//                    RelativeLayout layout = (RelativeLayout) findViewById(R.id.layout_classes);
+//                    layout.setBackground(d);
+//                }
+//            }
+        }
+    }
+
+    private String getRealPathFromURI(Uri contentURI) {
+        Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            return contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            return cursor.getString(idx);
         }
     }
 
