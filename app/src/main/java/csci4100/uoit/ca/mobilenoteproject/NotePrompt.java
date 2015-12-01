@@ -29,13 +29,16 @@ public class NotePrompt extends AppCompatActivity {
     TextView txtTitle;
     TextView txtDesc;
     private static final int EDIT_NOTE_REQUEST_CODE = 1;
+    private static final int EDIT_DELETE_NOTE_REQUEST_CODE = 2;
+
+    private Intent returnShowNoteIntent;
 
     // JSON parser class
     JSONParser jsonParser = new JSONParser();
 
     // single product url
     private static final String url_view_note_desc = "http://lifenote.ca/mobile/database/view_note.php";
-
+    private static final String url_delete_note = "http://lifenote.ca/mobile/database/delete_note.php";
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_NOTE = "note";
@@ -57,11 +60,12 @@ public class NotePrompt extends AppCompatActivity {
         if (requestCode == EDIT_NOTE_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 // refresh
-                Intent intent = getIntent();
+                Intent intent= getIntent();
                 finish();
                 startActivity(intent);
             }
         }
+
 
     }
 
@@ -145,6 +149,57 @@ public class NotePrompt extends AppCompatActivity {
         editNote.putExtra("note_pk",note_pk);
 
         startActivityForResult(editNote, EDIT_NOTE_REQUEST_CODE);
+    }
+
+    public void deleteNote(View v) {
+        deleteNote();
+    }
+
+    private void deleteNote() {
+        new DeleteNote().execute();
+        returnShowNoteIntent = new Intent();
+    }
+
+    class DeleteNote extends AsyncTask<String, String, String> {
+        int flag = 0;
+
+        protected String doInBackground(String... args) {
+
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            String note_pk = getIntent().getStringExtra("note_pk");
+            params.add(new BasicNameValuePair("note_pk", note_pk));
+
+
+            int success;
+            try {
+                // Building Parameters
+                // getting product details by making HTTP request
+                // Note that product details url will use GET request
+                JSONObject json = jsonParser.makeHttpRequest(
+                        url_delete_note, "POST", params);
+
+                // check your log for json response
+                Log.d("Note Delete", json.toString());
+
+                // json success tag
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+
+                    setResult(RESULT_OK, returnShowNoteIntent);
+                    finish();
+
+
+                } else {
+                    flag = 1;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+
+            return null;
+        }
     }
 }
 

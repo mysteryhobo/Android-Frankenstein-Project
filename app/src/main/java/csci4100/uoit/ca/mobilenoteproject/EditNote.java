@@ -30,8 +30,8 @@ public class EditNote extends AppCompatActivity {
     JSONParser jsonParser = new JSONParser();
 
     private static final String url_view_note_desc = "http://lifenote.ca/mobile/database/view_note.php";
-    private static final String url_update_note = "http://lifenote.ca/mobile/database/delete_note.php";
-    private static final String url_delete_note = "http://lifenote.ca/mobile/database/update_note.php";
+    private static final String url_update_note = "http://lifenote.ca/mobile/database/update_note.php";
+
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_NOTE = "note";
@@ -123,14 +123,7 @@ public class EditNote extends AppCompatActivity {
         }
     }
 
-    public void deleteNote(View v) {
-        deleteNote();
-    }
 
-    private void deleteNote() {
-        returnEditNoteIntent = new Intent();
-        new DeleteNote().execute();
-    }
 
     public void updateNote(View v){
         updateNote();
@@ -140,56 +133,25 @@ public class EditNote extends AppCompatActivity {
         returnEditNoteIntent = new Intent();
         new UpdateNote().execute();
     }
-    class DeleteNote extends AsyncTask<String, String, String> {
-        int flag = 0;
 
-        protected String doInBackground(String... args) {
-
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            String note_pk = getIntent().getStringExtra("note_pk");
-            params.add(new BasicNameValuePair("note_pk", note_pk));
-
-
-            int success;
-            try {
-            // Building Parameters
-            // getting product details by making HTTP request
-            // Note that product details url will use GET request
-            JSONObject json = jsonParser.makeHttpRequest(
-                    url_delete_note, "POST", params);
-
-            // check your log for json response
-            Log.d("Note Delete", json.toString());
-
-            // json success tag
-            success = json.getInt(TAG_SUCCESS);
-            if (success == 1) {
-
-                setResult(RESULT_OK, returnEditNoteIntent);
-                finish();
-
-
-            } else {
-                flag = 1;
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-
-        return null;
-    }
-    }
 
     class UpdateNote extends AsyncTask<String, String, String> {
         int flag = 0;
-
+        String title;
+        String text;
         protected String doInBackground(String... args) {
+
+            txtTitle = (EditText) findViewById(R.id.EditText_enterTitle);
+            txtDesc = (EditText) findViewById(R.id.EditText_description);
+            title = txtTitle.getText().toString();
+            text = txtDesc.getText().toString();
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             String note_pk = getIntent().getStringExtra("note_pk");
             params.add(new BasicNameValuePair("note_pk", note_pk));
+            params.add(new BasicNameValuePair("title",title));
+            params.add(new BasicNameValuePair("text",text));
+
 
 
             int success;
