@@ -5,9 +5,7 @@
 
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
-    <item android:title="hardcoded_test_AttachPopup" android:id="@+id/pop" />
-    <item android:title="hardcoded_login_screen" android:id="@+id/start" />
-    <item android:title="@string/menuItem_audioLectures" android:id="@+id/audioLectures"/>
+
 
 
 </menu>
