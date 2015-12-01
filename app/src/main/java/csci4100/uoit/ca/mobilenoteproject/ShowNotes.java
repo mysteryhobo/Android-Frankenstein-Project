@@ -73,10 +73,8 @@ public class ShowNotes extends ListActivity {
                         NotePrompt.class);
                 // sending note_pk to next activity
                 in.putExtra(TAG_NOTE_PK, note_pk);
-
-
                 // starting new activity and expecting some response back
-                startActivityForResult(in, 100);
+                startActivityForResult(in, NOTE_PROMPT_REQUEST_CODE);
             }
         });
     }
@@ -137,6 +135,9 @@ public class ShowNotes extends ListActivity {
         if (requestCode == NOTE_PROMPT_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK){
 
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
             }
         }
     }

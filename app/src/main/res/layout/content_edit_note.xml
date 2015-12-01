@@ -13,6 +13,12 @@
     tools:showIn="@layout/activity_edit_note">
 
     <EditText
+        android:id="@+id/EditText_enterTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/editTxt_noteTitle"/>
+
+    <EditText
         android:id="@+id/EditText_description"
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -21,11 +27,6 @@
         android:layout_alignParentEnd="true"
         android:layout_above="@+id/button3" />
 
-    <EditText
-        android:id="@+id/EditText_enterTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/editTxt_noteTitle"/>
 
     <EditText
         android:layout_width="wrap_content"
