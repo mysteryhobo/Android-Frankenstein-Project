@@ -156,6 +156,11 @@ public class ShowNotes extends ListActivity {
 
     }
 
+    public void showAudioLectures(View view) {
+        Intent showNotesIntent = new Intent(this, ShowAudioLectures.class);
+        startActivity(showNotesIntent);
+    }
+
 
     class LoadAllNotes extends AsyncTask<String, String, String> {
 
