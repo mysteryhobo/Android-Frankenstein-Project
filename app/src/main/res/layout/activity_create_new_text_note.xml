@@ -21,18 +21,7 @@
         android:hint="@string/editTxt_NewTExtNoteHint_NewTextNotePage"
         android:layout_below="@+id/EditText_time"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/lblAttach"
         android:gravity="top|left"
-        android:textColor="#fff"
-        android:textColorHint="#fff"/>
-
-    <TextView
-        android:id="@+id/lblAttach"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Attach:"
-        android:layout_above="@+id/openpopup"
-        android:layout_alignStart="@+id/openpopup"
         android:textColor="#fff"
         android:textColorHint="#fff"/>
 
@@ -47,7 +36,7 @@
         android:id="@+id/EditText_time"
         android:layout_alignTop="@+id/EditText_date"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/lblAttach"
+
         android:textColor="#fff"
         android:textColorHint="#fff"/>
 
@@ -60,11 +49,10 @@
         android:onClick="showDatePickerDialog"
         android:ems="10"
         android:id="@+id/EditText_date"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="37dp"
-        android:layout_toEndOf="@+id/lblAttach"
         android:textColor="#fff"
-        android:textColorHint="#fff"/>
+        android:textColorHint="#fff"
+        android:layout_below="@+id/EditText_enterTitle"
+        android:layout_alignEnd="@+id/EditText_enterTitle" />
 
 
     <ImageView

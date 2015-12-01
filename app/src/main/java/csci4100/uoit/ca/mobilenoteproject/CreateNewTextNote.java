@@ -75,31 +75,6 @@ public class CreateNewTextNote extends AppCompatActivity implements DatePickerDi
 
 
 
-        final ImageButton btnOpenPopup = (ImageButton)findViewById(R.id.openpopup);
-        btnOpenPopup.setOnClickListener(new ImageButton.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LayoutInflater layoutInflater
-                        = (LayoutInflater) getBaseContext()
-                        .getSystemService(LAYOUT_INFLATER_SERVICE);
-                View popupView = layoutInflater.inflate(R.layout.activity_attach_popup, null);
-                final PopupWindow popupWindow = new PopupWindow(popupView,
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT);
-
-                ImageButton btnDismiss = (ImageButton) popupView.findViewById(R.id.dismiss);
-                btnDismiss.setOnClickListener(new Button.OnClickListener() {
-                    public void onClick(View v) {
-                        popupWindow.dismiss();
-                    }
-                });
-
-                popupWindow.showAsDropDown(btnOpenPopup, 50, -30);
-            }
-        });
-
-
-
         Date date = new Date();
         String currDate = date.toString();
         String[] dateparts = currDate.split(" ");
