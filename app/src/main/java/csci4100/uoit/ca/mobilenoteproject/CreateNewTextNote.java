@@ -142,11 +142,11 @@ public class CreateNewTextNote extends AppCompatActivity implements DatePickerDi
         returnNewNoteIntent = new Intent();
 
         nameText = (EditText) findViewById(R.id.EditText_enterTitle);
-
+        String test = nameText.getText().toString();
         descriptionText = (EditText) findViewById(R.id.EditText_description);
 
 
-        if (nameText != null) {
+        if (test != null) {
 
             new InsertNote().execute();
 
@@ -165,11 +165,13 @@ public class CreateNewTextNote extends AppCompatActivity implements DatePickerDi
             String title = nameText.getText().toString();
             String description = descriptionText.getText().toString();
             String studentID = getIntent().getStringExtra("StudentID");
+            String class_fk = getIntent().getStringExtra("class_fk");
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("studentID", studentID));
             params.add(new BasicNameValuePair("title", title));
             params.add(new BasicNameValuePair("description", description));
+            params.add(new BasicNameValuePair("class_fk",class_fk));
             // updating UI from Background Thread
 
             // Check for success tag

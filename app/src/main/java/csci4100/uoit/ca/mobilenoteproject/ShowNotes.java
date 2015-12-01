@@ -74,6 +74,7 @@ public class ShowNotes extends ListActivity {
                 // sending note_pk to next activity
                 in.putExtra(TAG_NOTE_PK, note_pk);
 
+
                 // starting new activity and expecting some response back
                 startActivityForResult(in, 100);
             }
@@ -144,17 +145,13 @@ public class ShowNotes extends ListActivity {
         Intent createNewTextNoteIntent = new Intent(this, CreateNewTextNote.class);
 
         String student = getIntent().getStringExtra("StudentID");
-
+        String class_fk = getIntent().getStringExtra("class_pk");
+        createNewTextNoteIntent.putExtra("class_fk",class_fk);
         createNewTextNoteIntent.putExtra("StudentID", student);
         startActivityForResult(createNewTextNoteIntent, CREATE_NEW_TEXT_NOTE_REQUEST_CODE);
     }
 
 
-    public void showCourses(View view) {
-        Intent showNotesIntent = new Intent(this, ShowClasses.class);
-        startActivity(showNotesIntent);
-
-    }
 
     public void showAudioLectures(View view) {
         Intent showNotesIntent = new Intent(this, ShowAudioLectures.class);
@@ -177,7 +174,7 @@ public class ShowNotes extends ListActivity {
             JSONObject json = jParser.makeHttpRequest(url_all_notes, "GET", params);
 
             // Check your log cat for JSON reponse
-            Log.d("All Products: ", json.toString());
+            Log.d("All Notes: ", json.toString());
 
             try {
                 // Checking for SUCCESS TAG

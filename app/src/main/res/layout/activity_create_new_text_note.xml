@@ -90,5 +90,6 @@
         android:text="@string/btn_SubmitNoteText_CreatNewTextNotePage"
         android:id="@+id/btn_submitNewNote"
         android:layout_alignTop="@+id/openpopup"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="submitNote"/>
 </RelativeLayout>

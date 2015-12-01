@@ -77,7 +77,7 @@ public class ShowClasses extends ListActivity {
                 in.putExtra("StudentID", student);
 
                 // starting new activity and expecting some response back
-                startActivityForResult(in, SHOW_NOTES_REQUEST_CODE);
+                startActivity(in);
             }
         }); 
     }
