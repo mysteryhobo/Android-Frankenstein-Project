@@ -2,6 +2,7 @@ package csci4100.uoit.ca.mobilenoteproject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -11,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.app.ListActivity;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -211,5 +213,7 @@ public class ShowClasses extends ListActivity {
             });
         }
     }
+
+
 
 }
