@@ -50,14 +50,6 @@ public class ShowAudioLectures extends AppCompatActivity {
 
         ArrayList<AudioLecture> lectures = new ArrayList<>();
         listRaw(lectures);
-//        AudioLecture lecture1 = new AudioLecture("French 1");
-//        lectures.add(lecture1);
-//
-//        AudioLecture lecture2 = new AudioLecture("French 2");
-//        lectures.add(lecture2);
-//
-//        AudioLecture lecture3 = new AudioLecture("French 3");
-//        lectures.add(lecture3);
 
         AudioLectureAdaptor adaptor = new AudioLectureAdaptor(this, lectures);
         ListView lecturesList = (ListView) findViewById(R.id.lecturesListView);
